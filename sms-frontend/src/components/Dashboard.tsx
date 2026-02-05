@@ -60,6 +60,11 @@ export function Dashboard() {
     fetchTransactions();
   }, [fetchTransactions]);
 
+  useEffect(() => {
+    const interval = setInterval(fetchTransactions, 5000);
+    return () => clearInterval(interval);
+  }, [fetchTransactions]);
+
   return (
     <div className="flex h-screen bg-slate-50 font-sans text-slate-900">
       <main className="flex-1 flex flex-col h-screen overflow-hidden">
